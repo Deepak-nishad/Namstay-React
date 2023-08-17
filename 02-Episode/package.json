@@ -1,0 +1,21 @@
+{
+  "name": "02-episode",
+  "version": "1.0.0",
+  "description": "this is namstay react by akshay saini",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/Deepak-nishad/Namstay-React.git)"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Deepak kumar",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  }
+}
