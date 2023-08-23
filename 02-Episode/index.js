@@ -31,6 +31,13 @@ const TitleComponent = () => (
 //   </div>
 // );
 
+// cross site scripting
+// lets say we call api and api sends malicious data to the components
+//  const data =  api.get();
+//  data is pass to the component
+//   like this {data}
+//   you do not have to be worry beacuse jsx is so powerfull it prevent to cross site scripting or malicious data
+
 // to paas react element in component
 const HeadingComponent = () => (
   <div id="conatiner">
