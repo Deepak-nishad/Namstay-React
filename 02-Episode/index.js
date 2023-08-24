@@ -1,63 +1,50 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-Container">
-        <img
-          className="logo"
-          src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png?nwm=1&nws=1&industry=food&sf="
-        />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Conatct Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
+// const heading = React.createElement("h1", { id: "hellooo" }, "namstay React");
 
-const RestaurantCard = () => {
-  return (
-    <div className="res-card">
-      <img
-        className="res-logo"
-        alt="res-logo"
-        src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
-      />
-      <h3>Meghna Foods</h3>
-      <h4>Healty food, kito diet</h4>
-      <h4>4.5 stars</h4>
-      <h4>38 minutes</h4>
-    </div>
-  );
-};
+const heading = (
+  <h1 id="heding"> hello everone how are you i am jsx element </h1>
+);
 
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search">Search</div>
-      <div className="res-container">
-        <RestaurantCard />
-        <RestaurantCard />
-      </div>
-    </div>
-  );
-};
+// Two types of components
+//class base components - old
+// functional components- new
 
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
+const TitleComponent = () => (
+  <div id="conatiner">
+    <h1 className="heading">Namstay react Title unctional compnent</h1>
+  </div>
+);
+
+// const HeadingComponent = () => (
+//   <div id="conatiner">
+//     <h1 className="heading">Namstay react functional compnent</h1>
+//   </div>
+// );
+
+//component composition
+// const HeadingComponent = () => (
+//   <div id="conatiner">
+//     <TitleComponent />
+//     <h1 className="heading">Namstay react functional compnent</h1>
+//   </div>
+// );
+
+// cross site scripting
+// lets say we call api and api sends malicious data to the components
+//  const data =  api.get();
+//  data is pass to the component
+//   like this {data}
+//   you do not have to be worry beacuse jsx is so powerfull it prevent to cross site scripting or malicious data
+
+// to paas react element in component
+const HeadingComponent = () => (
+  <div id="conatiner">
+    {heading}
+    <h1 className="heading">Namstay react functional compnent</h1>
+  </div>
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<HeadingComponent />);
