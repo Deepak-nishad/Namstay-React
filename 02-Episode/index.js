@@ -22,7 +22,7 @@ const Header = () => {
   );
 };
 
-const RestaurantCard = () => {
+const RestaurantCard = (props) => {
   return (
     <div className="res-card">
       <img
@@ -30,10 +30,10 @@ const RestaurantCard = () => {
         alt="res-logo"
         src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
       />
-      <h3>Meghna Foods</h3>
-      <h4>Healty food, kito diet</h4>
-      <h4>4.5 stars</h4>
-      <h4>38 minutes</h4>
+      <h3>{props.resName}</h3>
+      <h4>{props.cuisine}</h4>
+      <h4>{props.rating}</h4>
+      <h4>{props.time}</h4>
     </div>
   );
 };
@@ -43,8 +43,13 @@ const Body = () => {
     <div className="body">
       <div className="search">Search</div>
       <div className="res-container">
-        <RestaurantCard />
-        <RestaurantCard />
+        <RestaurantCard
+          resName="Meghna food"
+          cuisine="Biryani, North indian Asian"
+          rating="4.5 stars"
+          time="38 minutes"
+        />
+        <RestaurantCard resName="KFC" cuisine="Burger,Fast Food" />
       </div>
     </div>
   );
