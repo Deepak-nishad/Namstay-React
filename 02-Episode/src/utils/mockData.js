@@ -1,7 +1,7 @@
 const resList = [
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "229",
       name: "Meghana Foods",
@@ -128,7 +128,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "121603",
       name: "Kannur Food Point",
@@ -263,7 +263,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "307050",
       name: "Call Me Chow",
@@ -388,7 +388,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "337335",
       name: "Kannur food kitchen",
@@ -523,7 +523,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "492159",
       name: "Roti Wala",
@@ -643,7 +643,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "65797",
       name: "Leon's - Burgers & Wings (Leon Grill)",
@@ -768,7 +768,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "425",
       name: "Hotel Empire",
@@ -888,7 +888,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "428",
       name: "Biryani Pot",
@@ -1007,7 +1007,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "306639",
       name: "The Coorg Food Co.",
@@ -1132,7 +1132,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "63957",
       name: "Madeena Hotel",
@@ -1252,7 +1252,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "71298",
       name: "Bengali Fun Foods",
@@ -1377,7 +1377,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "59593",
       name: "Al Daaz",
@@ -1503,7 +1503,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "5934",
       name: "Burger King",
@@ -1638,7 +1638,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "365010",
       name: "Hotel Salam",
