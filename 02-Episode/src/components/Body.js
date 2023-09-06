@@ -26,9 +26,9 @@ const Body = () => {
     setListOfRestraunts(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    setListOfRestraunts(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    // setFilteredRestaurant(
+    //   json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    // );
   };
 
   return listOfRestaurants.length === 0 ? (
@@ -71,7 +71,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {filteredRestaurant.map((restaurant, index) => (
+        {listOfRestaurants.map((restaurant, index) => (
           <ResturantCard key={index} resData={restaurant} />
         ))}
       </div>
