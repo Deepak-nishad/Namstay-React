@@ -9,8 +9,8 @@ const Body = () => {
   // Local State Variable - Super powerful variable
   // const [listOfRestaurants, setListOfRestraunts] = useState(resList);
   const [listOfRestaurants, setListOfRestraunts] = useState([]);
-  const [searchText, setSearchTexts] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const [searchText, setSearchTexts] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -21,14 +21,14 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     // Optional Chaining
     setListOfRestraunts(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    // setFilteredRestaurant(
-    //   json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    // );
+    setFilteredRestaurant(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   return listOfRestaurants.length === 0 ? (
@@ -48,10 +48,10 @@ const Body = () => {
           ></input>
           <button
             onClick={() => {
-              const filterResturants = listOfRestaurants.filter((res) =>
+              const filterRes = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              setFilteredRestaurant(filterResturants);
+              setFilteredRestaurant(filterRes);
             }}
           >
             Search
@@ -71,7 +71,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {listOfRestaurants.map((restaurant, index) => (
+        {filteredRestaurant.map((restaurant, index) => (
           <ResturantCard key={index} resData={restaurant} />
         ))}
       </div>
