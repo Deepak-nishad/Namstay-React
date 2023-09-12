@@ -1,16 +1,19 @@
 import React from "react";
-import ResturantCard from "./RestaurantCard ";
 import resList from "../utils/mockData";
+import { useState } from "react";
+
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import RestaurantCard from "./RestaurantCard ";
 // use index if you no unique key(In map function)
 
 const Body = () => {
   // Local State Variable - Super powerful variable
   // const [listOfRestaurants, setListOfRestraunts] = useState(resList);
   const [listOfRestaurants, setListOfRestraunts] = useState([]);
+  const [searchText, setSearchTexts] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-  const [searchText, setSearchTexts] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -21,7 +24,7 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    // console.log(json);
+    console.log(json);
     // Optional Chaining
     setListOfRestraunts(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -48,10 +51,10 @@ const Body = () => {
           ></input>
           <button
             onClick={() => {
-              const filterRes = listOfRestaurants.filter((res) =>
+              const filterResturants = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              setFilteredRestaurant(filterRes);
+              setFilteredRestaurant(filterResturants);
             }}
           >
             Search
@@ -62,8 +65,9 @@ const Body = () => {
           onClick={() => {
             // filter something here
             const filteredList = listOfRestaurants.filter(
-              (res) => res.info.avgRating > 4.2
+              (res) => res.data.avgRating > 4
             );
+            setListOfRestraunts(filteredList);
             setListOfRestraunts(filteredList);
           }}
         >
@@ -71,8 +75,13 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {filteredRestaurant.map((restaurant, index) => (
-          <ResturantCard key={index} resData={restaurant} />
+        {filteredRestaurant.map((restaurant) => (
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

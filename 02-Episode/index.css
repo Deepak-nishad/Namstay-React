@@ -72,3 +72,21 @@
 .filter {
     display: flex;
 }
+
+.menu {
+    width: 300px;
+    background-color: gray;
+    border-radius: 5px;
+
+}
+
+.menu:hover {
+    cursor: pointer;
+    background-color: aquamarine;
+}
+
+.user-card {
+    /* padding: 10px 10px; */
+    border: 2px solid black;
+    /* background-color: aquamarine; */
+}

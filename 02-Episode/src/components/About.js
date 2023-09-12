@@ -1,4 +1,6 @@
 import React from "react";
+import User from "./User";
+import UserClass from "./UserClass";
 
 const About = () => {
   return (
@@ -8,6 +10,12 @@ const About = () => {
         with unparalleled convenience. Convenience is what makes us tick. It's
         what makes us get out of bed and say, "Let's do this."
       </h1>
+      <User name="Deepak" email="deepak123" address="chander lok colony" />
+      <UserClass
+        name="Deepak"
+        email="deepak123"
+        address="chander lok (class base) "
+      />
     </>
   );
 };
