@@ -2,32 +2,47 @@ import React from "react";
 
 class UserClass extends React.Component {
   constructor(props) {
+    console.log("constrour called");
     super(props);
-    console.log(props);
 
     this.state = {
-      count: 0,
-      count2: 2,
+      userInfo: {
+        name: "Dummy",
+        location: "Default",
+        avatar_url:
+          "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
+      },
     };
   }
 
+  async componentDidMount() {
+    console.log("component did monut");
+    const data = await fetch("https://api.github.com/users/Deepak-nishad");
+    const json = await data.json();
+    console.log(json);
+
+    this.setState({
+      userInfo: json,
+    });
+  }
+
+  componentDidUpdate() {
+    console.log("Compm=nonet did updaete");
+  }
+
+  componentWillUnmount() {
+    console.log("unmount");
+  }
+
   render() {
-    const { name, location } = this.props;
-    const { count, count2 } = this.state;
+    console.log("render callled");
+    const { name, location, bio, avatar_url } = this.state.userInfo;
     return (
       <div className="user-card">
-        {/* <h1>Count user class : {this.state.count}</h1> */}
-        <h1>Count varibale using another way to destrutor : {count}</h1>
-        <h1>Count2 varibale using another way to destrutor : {count2}</h1>
-
-        {/* -------------------------------------------------------- */}
-        {/* <h1>Deepak</h1>
-        <h1>deepakkumar62559@gmail.com</h1>
-        <h1>chander lok colony jind</h1> */}
-        {/* ------------------------------------------------------------------------------------ */}
-        {/* <h1>{this.props.name}</h1>
-        <h1>{this.props.email}</h1>
-        <h1>{this.props.address}</h1> */}
+        <h1>Name :- {name}</h1>
+        <h1>github Bio :- {bio}</h1>
+        <h1>location :- {location}</h1>
+        <img src={avatar_url} />
       </div>
     );
   }
