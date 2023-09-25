@@ -1,11 +1,11 @@
 import React from "react";
 import resList from "../utils/mockData";
 import { useState } from "react";
-
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard ";
+import useOnlineStatus from "../utils/useOnlineStatus";
 // use index if you no unique key(In map function)
 
 const Body = () => {
@@ -33,6 +33,15 @@ const Body = () => {
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks like you're offline!! Please check your internet connection;
+      </h1>
+    );
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
