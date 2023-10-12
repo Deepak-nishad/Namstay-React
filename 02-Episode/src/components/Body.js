@@ -1,11 +1,13 @@
 import React from "react";
 import resList from "../utils/mockData";
 import { useState } from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard ";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/userContext";
+
 // use index if you no unique key(In map function)
 
 const Body = () => {
@@ -24,7 +26,8 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
+
     // Optional Chaining
     setListOfRestraunts(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -42,6 +45,8 @@ const Body = () => {
         Looks like you're offline!! Please check your internet connection;
       </h1>
     );
+
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
@@ -76,14 +81,21 @@ const Body = () => {
             onClick={() => {
               // filter something here
               const filteredList = listOfRestaurants.filter(
-                (res) => res.data.avgRating > 4
+                (res) => res.info.avgRating > 4.2
               );
-              setListOfRestraunts(filteredList);
               setListOfRestraunts(filteredList);
             }}
           >
             Top Rated Resturant
           </button>
+        </div>
+        <div className="search m-4 p-4 flex items-center">
+          <label>UserName : </label>
+          <input
+            className="border border-black p-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
       </div>
       <div className="flex flex-wrap">
