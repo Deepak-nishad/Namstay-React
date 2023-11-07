@@ -1,5 +1,4 @@
 import React from "react";
-import resList from "../utils/mockData";
 import { useState } from "react";
 import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
