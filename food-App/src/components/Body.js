@@ -12,29 +12,26 @@ import UserContext from "../utils/userContext";
 const Body = () => {
   // Local State Variable - Super powerful variable
   // const [listOfRestaurants, setListOfRestraunts] = useState(resList);
-  const [listOfRestaurants, setListOfRestraunts] = useState([]);
+  const [listOfRestaurants, setListOfRestraunt] = useState([]);
   const [searchText, setSearchTexts] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    const json = await data.json();
+
+    // Optional Chaining
+    setListOfRestraunt(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  };
   useEffect(() => {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    // console.log(json);
 
-    // Optional Chaining
-    setListOfRestraunts(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
 
   const onlineStatus = useOnlineStatus();
 
@@ -80,9 +77,9 @@ const Body = () => {
             onClick={() => {
               // filter something here
               const filteredList = listOfRestaurants.filter(
-                (res) => res.info.avgRating > 4.2
+                (res) => res.info.avgRating > 4.3
               );
-              setListOfRestraunts(filteredList);
+              setFilteredRestaurant(filteredList);
             }}
           >
             Top Rated Resturant
